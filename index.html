@@ -88,6 +88,31 @@ h1 span{white-space:nowrap;background:linear-gradient(100deg,var(--blue),var(--c
 
 /* painel do hero */
 .cena{perspective:1100px;display:grid;place-items:center;padding:24px 0}
+@property --giz{syntax:"<angle>";inherits:true;initial-value:45deg}
+@property --gix{syntax:"<angle>";inherits:true;initial-value:57deg}
+.palco{position:relative;width:min(470px,100%);aspect-ratio:1/1.04;container-type:inline-size;perspective:1600px;display:grid;place-items:center}
+.palco::before{content:"";position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(closest-side,rgba(100,140,255,.3),rgba(57,213,232,.06) 60%,transparent 74%)}
+.pilha{position:relative;width:45cqw;aspect-ratio:1;transform-style:preserve-3d;transform:translateY(14cqw) rotateX(var(--gix)) rotateZ(var(--giz));will-change:transform}
+.cam,.luzc,.anel,.somb{position:absolute;inset:0;border-radius:23%}
+.cam{transform-style:preserve-3d;transform:translateZ(var(--z));animation:sobe 7s ease-in-out infinite}
+@keyframes sobe{50%{transform:translateZ(calc(var(--z) + var(--a)))}}
+.cam i{position:absolute;inset:0;border-radius:23%;background:#101116;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transform:translateZ(calc(var(--k) * -.42cqw))}
+.c3 i{background:#2343b4;box-shadow:inset 0 0 0 1px rgba(190,210,255,.25)}
+.face{position:absolute;inset:0;border-radius:23%;overflow:hidden;background:linear-gradient(135deg,#3a3d47,#17181c 52%,#0b0b0d);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)}
+.face::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 55%)}
+.f-dados{background-image:radial-gradient(circle,rgba(255,255,255,.34) .8cqw,transparent .95cqw),linear-gradient(135deg,#3a3d47,#17181c 52%,#0b0b0d);background-size:6.4cqw 6.4cqw,auto;background-position:center}
+.f-cod{display:grid;align-content:center;gap:2.6cqw;padding:0 9cqw}
+.f-cod b{height:2.1cqw;border-radius:2cqw;background:rgba(255,255,255,.7);width:55%}
+.f-cod b:nth-child(2){width:96%;opacity:.45}.f-cod b:nth-child(3){width:52%;opacity:.45;margin-left:18%}.f-cod b:nth-child(4){width:70%;margin-left:18%}
+.f-ra{display:grid;place-items:center;background:linear-gradient(135deg,#8fadff,#4f7df5 55%,#2bb8d6);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6);font-family:"Sora",var(--font);font-weight:700;font-size:16.5cqw;letter-spacing:-.04em;color:#06122e}
+.f-ra::after{background:linear-gradient(135deg,rgba(255,255,255,.42),transparent 60%)}
+.luzc{inset:-6%;background:linear-gradient(135deg,var(--blue),var(--cyan));filter:blur(5cqw);transform:translateZ(var(--z));animation:pulsa 5s ease-in-out infinite}
+@keyframes pulsa{50%{filter:blur(5cqw) brightness(.6)}}
+.anel{inset:-22%;border:1px solid rgba(255,255,255,.13);transform:translateZ(-9cqw)}
+.anel.a2{inset:-44%;border-color:rgba(255,255,255,.07)}
+.somb{inset:-4%;background:#000;filter:blur(4cqw);opacity:.75;transform:translateZ(-9cqw)}
+@media (hover:none){.pilha{animation:gira3 10s ease-in-out infinite alternate}}
+@keyframes gira3{from{--giz:28deg}to{--giz:62deg}}
 .retrato{position:relative;width:min(370px,100%);aspect-ratio:4/4.7;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out}
 .retrato::before{content:"";position:absolute;inset:-22%;border-radius:50%;background:radial-gradient(closest-side,rgba(100,140,255,.28),transparent 72%);z-index:-1}
 .orb{position:absolute;left:50%;top:50%;width:152%;aspect-ratio:1;translate:-50% -50%;z-index:-1;animation:gira 90s linear infinite}
@@ -114,10 +139,15 @@ h2{font-size:clamp(27px,3.3vw,42px);line-height:1.14;letter-spacing:-.035em;font
 .alt{background:linear-gradient(180deg,transparent,rgba(17,22,32,.75) 12%,rgba(17,22,32,.75) 88%,transparent)}
 
 /* sobre */
-.sobre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.sobre{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:72px;align-items:center}
+#sobre{overflow:hidden;overflow:clip}
+.sobre .retrato{width:min(330px,100%)}
+.sobre .chip.c1{left:-22px}
+.sobre .chip.c2{right:-30px}
+.sobre .txt{margin-bottom:28px}
 .sobre .txt p{color:var(--tx2);margin-bottom:18px}
 .sobre .txt p{color:var(--tx);font-size:clamp(20px,2vw,25px);line-height:1.45;letter-spacing:-.01em}
-.pontos{display:grid;gap:12px}
+.pontos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .pt{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);transition:border-color .25s,transform .25s}
 .pt:hover{border-color:var(--line2);transform:translateX(4px)}
 .pt .ico{width:44px;height:44px;border-radius:8px;background:rgba(100,140,255,.1);color:var(--blue);display:grid;place-items:center;font-size:20px}
@@ -254,9 +284,10 @@ dialog[open]{animation:abre .28s ease-out}
   .sobre{grid-template-columns:1fr;gap:36px}
   .duo{grid-template-columns:1fr;gap:36px}
   .duo .cab{position:static}
-  .retrato{width:min(320px,74%)}
-  .chip.c1{left:-12%}
-  .chip.c2{right:-12%}
+  .retrato,.sobre .retrato{width:min(300px,72%)}
+  .chip.c1,.sobre .chip.c1{left:-12%}
+  .chip.c2,.sobre .chip.c2{right:-12%}
+  .palco{width:min(400px,92%)}
   .tec{grid-template-columns:repeat(2,minmax(0,1fr))}
   .etapas{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 18px}
   .etapas::before{display:none}
@@ -281,6 +312,7 @@ dialog[open]{animation:abre .28s ease-out}
   .fim{padding:88px 0 64px}
   #fundo{opacity:.35}
 }
+@media (max-width:560px){.pontos{grid-template-columns:1fr}}
 @media (max-width:360px){h1 span{white-space:normal}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -332,11 +364,15 @@ dialog[open]{animation:abre .28s ease-out}
       </div>
     </div>
     <div class="cena rev" style="--d:.2s">
-      <div class="retrato" id="painel">
-        <svg class="orb" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="97" fill="none" stroke="#648CFF" stroke-opacity=".34" stroke-width=".5" stroke-dasharray="1.2 4.6"/><circle cx="100" cy="100" r="80" fill="none" stroke="#39D5E8" stroke-opacity=".2" stroke-width=".4"/><circle cx="197" cy="100" r="2.2" fill="#39D5E8"/><circle cx="20" cy="100" r="1.6" fill="#648CFF"/></svg>
-        <div class="foto"><span><img src="https://github.com/rafaelsassuncao.png?size=460" alt="Foto de Rafael Assunção" width="460" height="460"></span></div>
-        <div class="chip c1"><span class="ci"><svg class="ic"><use href="#i-blocks"/></svg></span><span><b>Nexo</b><small><i></i>Em uso</small></span></div>
-        <div class="chip c2"><span class="ci"><svg class="ic"><use href="#i-graduation-cap"/></svg></span><span><b>Formado em ADS</b></span></div>
+      <div class="palco" id="palco" aria-hidden="true">
+        <div class="pilha" id="pilha">
+          <span class="anel a2"></span><span class="anel"></span><span class="somb"></span>
+          <div class="cam c1" style="--z:0cqw;--a:.8cqw"><i style="--k:8"></i><i style="--k:6"></i><i style="--k:4"></i><i style="--k:2"></i><div class="face f-dados"></div></div>
+          <span class="luzc" style="--z:9cqw;opacity:.34"></span>
+          <div class="cam c2" style="--z:19cqw;--a:1.6cqw;animation-delay:-1.2s"><i style="--k:8"></i><i style="--k:6"></i><i style="--k:4"></i><i style="--k:2"></i><div class="face f-cod"><b></b><b></b><b></b><b></b></div></div>
+          <span class="luzc" style="--z:28cqw;opacity:.5"></span>
+          <div class="cam c3" style="--z:38cqw;--a:2.4cqw;animation-delay:-2.4s"><i style="--k:8"></i><i style="--k:6"></i><i style="--k:4"></i><i style="--k:2"></i><div class="face f-ra">RA</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -346,6 +382,15 @@ dialog[open]{animation:abre .28s ease-out}
   <div class="wrap">
     <div class="cab rev"><h2 id="t-sobre">Tecnologia com visão de negócio</h2></div>
     <div class="sobre">
+      <div class="cena rev">
+      <div class="retrato" id="painel">
+        <svg class="orb" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="97" fill="none" stroke="#648CFF" stroke-opacity=".34" stroke-width=".5" stroke-dasharray="1.2 4.6"/><circle cx="100" cy="100" r="80" fill="none" stroke="#39D5E8" stroke-opacity=".2" stroke-width=".4"/><circle cx="197" cy="100" r="2.2" fill="#39D5E8"/><circle cx="20" cy="100" r="1.6" fill="#648CFF"/></svg>
+        <div class="foto"><span><img src="https://github.com/rafaelsassuncao.png?size=460" alt="Foto de Rafael Assunção" width="460" height="460"></span></div>
+        <div class="chip c1"><span class="ci"><svg class="ic"><use href="#i-blocks"/></svg></span><span><b>Nexo</b><small><i></i>Em uso</small></span></div>
+        <div class="chip c2"><span class="ci"><svg class="ic"><use href="#i-graduation-cap"/></svg></span><span><b>Formado em ADS</b></span></div>
+      </div>
+      </div>
+      <div>
       <div class="txt rev"><p>Formado em Análise e Desenvolvimento de Sistemas. Crio apps para problemas reais e uso a visão comercial para decidir o que construir.</p></div>
       <ul class="pontos">
         <li class="pt rev"><div class="ico"><svg class="ic"><use href="#i-graduation-cap"/></svg></div><div><b>Formação em ADS</b><span>Análise e Desenvolvimento de Sistemas</span></div></li>
@@ -353,6 +398,7 @@ dialog[open]{animation:abre .28s ease-out}
         <li class="pt rev" style="--d:.12s"><div class="ico"><svg class="ic"><use href="#i-briefcase"/></svg></div><div><b>Visão comercial</b><span>Hoya Vision Care</span></div></li>
         <li class="pt rev" style="--d:.18s"><div class="ico"><svg class="ic"><use href="#i-users"/></svg></div><div><b>Equipe</b><span>TI da Shalom Church</span></div></li>
       </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -578,6 +624,11 @@ document.querySelector('.ev').classList.add('ativo');document.querySelector('.ev
 if(!reduz&&!toque){
   var root=document.documentElement;
   addEventListener('pointermove',function(e){root.style.setProperty('--mx',e.clientX+'px');root.style.setProperty('--my',e.clientY+'px')},{passive:true});
+  var pilha=document.getElementById('pilha');
+  if(pilha){var tz=45,tx=57,gz=45,gx=57,rodando=false;
+    var passo=function(){tz+=(gz-tz)*.08;tx+=(gx-tx)*.08;pilha.style.setProperty('--giz',tz.toFixed(2)+'deg');pilha.style.setProperty('--gix',tx.toFixed(2)+'deg');if(Math.abs(gz-tz)+Math.abs(gx-tx)>.05){requestAnimationFrame(passo)}else{rodando=false}};
+    addEventListener('pointermove',function(e){if(scrollY>innerHeight)return;gz=45+(e.clientX/innerWidth-.5)*80;gx=57-(e.clientY/innerHeight-.5)*30;if(!rodando){rodando=true;requestAnimationFrame(passo)}},{passive:true});
+  }
   var painel=document.getElementById('painel');
   if(painel){
     painel.parentNode.addEventListener('pointermove',function(e){var r=painel.getBoundingClientRect();var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;painel.style.setProperty('--ry',((x-.5)*8).toFixed(2)+'deg');painel.style.setProperty('--rx',((.5-y)*6).toFixed(2)+'deg');painel.style.setProperty('--px',(x*100)+'%');painel.style.setProperty('--py',(y*100)+'%')});
