@@ -122,54 +122,60 @@ h2{font-size:clamp(30px,3.8vw,46px);line-height:1.1;letter-spacing:-.03em;font-w
 .pt span{color:var(--tx2);font-size:14.5px;line-height:1.5}
 
 /* projetos */
-.grade{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
-.proj{grid-column:span 2;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;text-align:left;transition:transform .3s,border-color .3s;position:relative;cursor:pointer}
-.proj.g{grid-column:span 4}
-.proj::after{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--cx,50%) var(--cy,0%),rgba(100,140,255,.13),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.proj:hover,.proj:focus-visible{transform:translateY(-4px);border-color:var(--line2)}
-.proj:hover::after{opacity:1}
-.vis{height:190px;background:linear-gradient(135deg,#10172a,#0d1322);border-bottom:1px solid var(--line);position:relative;overflow:hidden;padding:18px;display:grid;align-content:start;gap:8px}
-.g .vis{height:100%;min-height:210px}
-.proj.g{flex-direction:row}
-.proj.g .vis{width:46%;border-bottom:0;border-right:1px solid var(--line);flex:none}
-.proj.g .corpo{flex:1}
-.vis .l{height:10px;border-radius:3px;background:rgba(241,243,248,.09)}
-.vis .l.a{background:rgba(100,140,255,.45)}
-.vis .l.c{background:rgba(57,213,232,.4)}
-.vis .row{display:grid;grid-template-columns:22px 1fr 36px;gap:10px;align-items:center}
-.vis .row i{height:22px;border-radius:5px;background:rgba(241,243,248,.07)}
-.vis .row.on i:first-child{background:rgba(100,140,255,.5)}
-.vis .blocos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.vis .blocos i{height:46px;border-radius:6px;background:rgba(241,243,248,.06);border:1px solid var(--line)}
-.vis .blocos i.a{background:rgba(100,140,255,.22);border-color:rgba(100,140,255,.4)}
-.vis .blocos i.c{background:rgba(57,213,232,.16);border-color:rgba(57,213,232,.35)}
-.vis .ilu{position:absolute;right:12px;bottom:10px;font-size:11px;color:#5d6577}
-.corpo{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
-.topo-p{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.proj h3{font-size:21px;letter-spacing:-.02em;font-weight:600;line-height:1.2}
-.st{font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--tx2);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.st.ok{color:var(--ok);border-color:rgba(61,214,140,.35)}
+.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.proj{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#171e2b,#131925);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .45s}
+.proj::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;background:radial-gradient(420px circle at var(--cx,50%) var(--cy,0%),rgba(100,140,255,.16),transparent 60%);opacity:0;transition:opacity .35s}
+.proj:hover,.proj:focus-visible{transform:translateY(-6px);border-color:rgba(100,140,255,.5);box-shadow:0 30px 70px -30px rgba(100,140,255,.5),0 0 0 1px rgba(100,140,255,.15)}
+.proj:hover::before,.proj:focus-visible::before{opacity:1}
+.proj.main{grid-column:1/-1;flex-direction:row}
+.vis{position:relative;overflow:hidden;aspect-ratio:16/9;background:radial-gradient(120% 90% at 20% 0%,#16203a 0%,#0c111d 70%);border-bottom:1px solid var(--line);container-type:inline-size}
+.vis::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 70%,rgba(11,13,18,.35))}
+.main .vis{flex:1.3;aspect-ratio:auto;min-height:380px;border-bottom:0;border-right:1px solid var(--line)}
+.art{position:absolute;inset:0;width:100%;height:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .art{transform:scale(1.05)}
+.corpo{display:flex;flex-direction:column;gap:14px;padding:24px 26px 26px;flex:1;position:relative;z-index:1}
+.main .corpo{flex:1;justify-content:center;padding:36px 38px}
+.topo-p{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.proj h3{font-size:24px;letter-spacing:-.025em;font-weight:650;line-height:1.2}
+.main h3{font-size:clamp(30px,3.2vw,40px);letter-spacing:-.035em}
+.st{font-size:12px;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--tx2);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.st.ok{color:var(--ok);border-color:rgba(61,214,140,.35);background:rgba(61,214,140,.07)}
 .st.ok::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok)}
-.proj p{color:var(--tx2);font-size:15.5px;line-height:1.6}
+.proj p.d{color:var(--tx2);font-size:16px;line-height:1.6}
+.main p.d{font-size:17.5px;color:#b3bacb}
+.mods{display:flex;flex-wrap:wrap;gap:8px}
+.mods span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:6px 12px;border-radius:8px;background:rgba(100,140,255,.1);border:1px solid rgba(100,140,255,.22);color:#c9d6ff}
+.mods .ic{width:15px;height:15px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.tags span{font-size:12.5px;padding:3px 10px;border-radius:5px;background:rgba(100,140,255,.1);color:#b9c8ff}
-.mais{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--blue);font-weight:500}
-.mais .ic{transition:transform .25s}
+.main .tags{margin-top:6px}
+.tags span{font-size:12.5px;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.06);color:#b9c1d4;border:1px solid rgba(255,255,255,.06)}
+.mais{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:#fff;font-weight:500;margin-top:4px;align-self:flex-start}
+.main .mais{padding:12px 18px;border-radius:var(--r);background:var(--blue);color:#06080d;margin-top:10px;transition:box-shadow .3s}
+.proj:hover .main .mais,.main:hover .mais{box-shadow:0 10px 30px -10px rgba(100,140,255,.8)}
+.mais .ic{transition:transform .3s}
 .proj:hover .mais .ic{transform:translate(3px,-3px)}
-.nota{margin-top:26px;font-size:14px;color:var(--tx2);display:flex;gap:10px;align-items:flex-start}
+.mais.l{color:var(--blue)}
+.nota{margin-top:28px;font-size:14px;color:var(--tx2);display:flex;gap:10px;align-items:flex-start}
 .nota .ic{margin-top:4px;color:var(--cyan)}
+.mv{margin:0 -32px 24px;border-radius:12px 12px 0 0;border-left:0;border-right:0;border-top:0;aspect-ratio:16/9}
+@media (max-width:1020px){.main .vis{min-height:300px}.proj h3{font-size:22px}}
+@media (max-width:860px){.proj.main{flex-direction:column}.main .vis{flex:none;aspect-ratio:16/9;min-height:0;border-right:0;border-bottom:1px solid var(--line)}.main .corpo{padding:24px 22px 26px}}
+@media (max-width:700px){.grade{grid-template-columns:1fr}.mv{margin:0 -22px 18px}}
+@media (hover:none){.proj:hover{transform:none;box-shadow:none}.proj:hover .art{transform:none}}
 
 /* modal */
 dialog{margin:auto;width:min(720px,100% - 32px);max-height:calc(100svh - 48px);background:var(--bg2);color:var(--tx);border:1px solid var(--line2);border-radius:12px;padding:0;overflow:auto;box-shadow:0 40px 100px -20px rgba(0,0,0,.9)}
 dialog::backdrop{background:rgba(5,7,11,.72);backdrop-filter:blur(4px)}
 dialog[open]{animation:abre .28s ease-out}
 @keyframes abre{from{opacity:0;transform:translateY(14px) scale(.98)}}
-.m-in{padding:32px}
-.m-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}
+.m-in{position:relative;padding:0 32px 32px}
+.m-in .m-top{margin-bottom:0}
+.m-in .m-top h3{margin:0}
+.m-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:8px}
 .m-in h3{font-size:30px;letter-spacing:-.03em;line-height:1.15}
-.fecha{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:var(--r);font-size:18px;flex:none}
+.fecha{position:absolute;top:14px;right:14px;z-index:5;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line2);background:rgba(11,13,18,.75);border-radius:var(--r);font-size:18px}
 .fecha:hover{border-color:var(--line2)}
-.m-in .lead{color:var(--tx2);margin:10px 0 24px}
+.m-in .lead{color:var(--tx2);margin:6px 0 22px}
 .bl{border-top:1px solid var(--line);padding:18px 0}
 .bl h4{font-size:13px;color:var(--blue);letter-spacing:.06em;font-weight:600;margin-bottom:8px}
 .bl p,.bl li{color:#c9cedb;font-size:16px}
@@ -241,9 +247,6 @@ dialog[open]{animation:abre .28s ease-out}
   .hero .wrap{grid-template-columns:1fr;gap:44px}
   .cena{max-width:520px}
   .sobre{grid-template-columns:1fr;gap:36px}
-  .grade{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .proj,.proj.g{grid-column:span 1}
-  .proj.g{grid-column:span 2}
   .tec{grid-template-columns:repeat(2,minmax(0,1fr))}
   .etapas{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 18px}
   .etapas::before{display:none}
@@ -257,9 +260,6 @@ dialog[open]{animation:abre .28s ease-out}
   .burger{display:grid}
   section{padding:80px 0}
   .hero{padding-top:104px}
-  .grade{grid-template-columns:1fr}
-  .proj.g{grid-column:span 1;flex-direction:column}
-  .proj.g .vis{width:100%;min-height:0;height:190px;border-right:0;border-bottom:1px solid var(--line)}
   .tec{grid-template-columns:1fr}
   .etapas{grid-template-columns:1fr;gap:30px}
   .linha{padding-left:34px}
@@ -279,7 +279,7 @@ dialog[open]{animation:abre .28s ease-out}
 </style>
 </head>
 <body class="sem-js">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-code-xml" viewBox="0 0 24 24"><path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /></symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></symbol><symbol id="i-graduation-cap" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /> <rect width="20" height="14" x="2" y="6" rx="2" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-blocks" viewBox="0 0 24 24"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" /> <rect x="14" y="2" width="8" height="8" rx="1" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-terminal" viewBox="0 0 24 24"><path d="M12 19h8" /> <path d="m4 17 6-6-6-6" /></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-code-xml" viewBox="0 0 24 24"><path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /></symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></symbol><symbol id="i-graduation-cap" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol><symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /> <rect width="20" height="14" x="2" y="6" rx="2" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-blocks" viewBox="0 0 24 24"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2" /> <rect x="14" y="2" width="8" height="8" rx="1" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-terminal" viewBox="0 0 24 24"><path d="M12 19h8" /> <path d="m4 17 6-6-6-6" /></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol><symbol id="i-ticket" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /></symbol><symbol id="i-calendar-days" viewBox="0 0 24 24"><path d="M8 2v3" /> <path d="M16 2v3" /> <rect x="3" y="3" width="18" height="18" rx="2" /> <path d="M3 9h18" /> <path d="M8 13h.01" /> <path d="M12 13h.01" /> <path d="M16 13h.01" /> <path d="M8 17h.01" /> <path d="M12 17h.01" /> <path d="M16 17h.01" /></symbol><symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 5v16" /> <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="i-layout-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1" /> <rect width="7" height="5" x="14" y="3" rx="1" /> <rect width="7" height="9" x="14" y="12" rx="1" /> <rect width="7" height="5" x="3" y="16" rx="1" /></symbol><symbol id="i-clipboard-check" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="m9 14 2 2 4-4" /></symbol><symbol id="i-message-square" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /></symbol><symbol id="i-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol></defs></svg>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <div class="progresso" id="prog"></div>
 <canvas id="fundo" aria-hidden="true"></canvas>
@@ -354,7 +354,7 @@ dialog[open]{animation:abre .28s ease-out}
   <div class="wrap">
     <div class="cab rev"><div class="n">02 · Projetos em destaque</div><h2 id="t-proj">Projetos</h2></div>
     <div class="grade" id="grade"></div>
-    <p class="nota rev"><svg class="ic"><use href="#i-lock"/></svg><span>Projetos privados. As imagens são ilustrações.</span></p>
+    <p class="nota rev"><svg class="ic"><use href="#i-lock"/></svg><span>Projetos privados. As imagens são genéricas e representam cada app.</span></p>
   </div>
 </section>
 
@@ -437,31 +437,83 @@ dialog[open]{animation:abre .28s ease-out}
 <script>
 document.body.classList.remove('sem-js');
 var PROJ=[
-{id:'nexo',g:1,nome:'Nexo',status:'Em uso',ok:1,desc:'Ecossistema de apps da Shalom Church.',problema:'Apps da igreja precisavam seguir as mesmas regras.',solucao:'Ecossistema com regras e código comuns.',func:['Código comum entre os apps','Feito em equipe'],tec:['JavaScript'],vis:'a'},
-{id:'discipulado',nome:'Discipulado',status:'Privado',desc:'Presença e discipulado da igreja.',problema:'Acompanhar presença de forma organizada.',solucao:'App do Nexo com níveis de acesso.',func:['Controle de presença','Líderes e administradores'],tec:['JavaScript','Nexo'],vis:'b'},
-{id:'agenda',nome:'Agenda Shalom',status:'Privado',desc:'Reserva de salas e espaços.',problema:'Ministérios precisavam reservar espaços sem conflito.',solucao:'Agenda única, parte do Nexo.',func:['Reserva de espaços','Integrada ao Nexo'],tec:['JavaScript','Nexo'],vis:'c'},
-{id:'vouchers',nome:'Meus vouchers',status:'Em uso pessoal',ok:1,desc:'Controle dos meus vouchers comerciais.',problema:'Acompanhar vouchers sem anotações soltas.',solucao:'App pessoal em TypeScript.',func:['Controle de vouchers'],tec:['TypeScript'],vis:'d'},
-{id:'comercial',nome:'Ferramentas comerciais',status:'Privado',desc:'Metas, comissões e fechamentos.',problema:'Acompanhar metas e comissões com clareza.',solucao:'Controles pessoais de vendas.',func:['Metas e comissões','Fechamentos mensais'],tec:['TypeScript'],vis:'e'}
+{id:'nexo',main:1,nome:'Nexo',status:'Em uso',ok:1,desc:'Ecossistema de apps da Igreja Shalom, com regras gerais e código comum.',
+ mods:[['layout-dashboard','Portal'],['clipboard-check','Discipulado'],['calendar-days','Agenda'],['book-open','Manual dos voluntários']],
+ obj:'Reunir os aplicativos da igreja em um só ecossistema, com regras e código comuns.',
+ func:['Portal de entrada','Discipulado','Agenda','Manual dos voluntários'],tec:['JavaScript','React','Supabase','Vercel'],vis:'nexo'},
+{id:'discipulado',nome:'Discipulado',status:'Versão 4.0',desc:'Controle de presença e acompanhamento do discipulado.',
+ obj:'Acompanhar a presença e o discipulado da igreja.',
+ func:['Controle de presença','Líderes e administradores com níveis de acesso'],tec:['React','Supabase','Vercel'],vis:'disc'},
+{id:'agenda',nome:'Agenda Shalom',status:'Arquivado',desc:'Reserva de espaços da igreja, parte do ecossistema Nexo.',
+ obj:'Organizar a reserva dos espaços da igreja.',
+ func:['Reserva de espaços','Hoje faz parte do Nexo'],tec:['JavaScript'],vis:'agenda'},
+{id:'vouchers',nome:'Meus vouchers',status:'Em uso pessoal',ok:1,desc:'Controle pessoal dos vouchers HOYA da minha rotina comercial.',
+ obj:'Controlar os meus vouchers HOYA.',
+ func:['Controle pessoal de vouchers'],tec:['Next.js','TypeScript','Postgres','Vercel'],vis:'vouch'},
+{id:'farma',nome:'Farma',status:'Privado',desc:'Fechamento mensal da farmácia: metas, comissões e mensagens.',
+ obj:'Fazer o fechamento mensal da farmácia.',
+ func:['Metas','Comissões','Mensagens'],tec:['Next.js','TypeScript','Postgres'],vis:'farma'}
 ];
+function ico(n){return '<svg class="ic"><use href="#i-'+n+'"/></svg>'}
 function vis(t){
-  var h='';
-  if(t==='a'){h='<div class="blocos"><i class="a"></i><i class="c"></i><i></i></div><div class="blocos"><i></i><i class="a"></i><i class="c"></i></div><div class="l a" style="width:70%"></div><div class="l" style="width:48%"></div>';}
-  else if(t==='b'){h='<div class="row on"><i></i><div class="l a"></div><div class="l"></div></div><div class="row"><i></i><div class="l"></div><div class="l"></div></div><div class="row on"><i></i><div class="l a"></div><div class="l"></div></div><div class="row"><i></i><div class="l"></div><div class="l"></div></div>';}
-  else if(t==='c'){h='<div class="blocos"><i></i><i class="a"></i><i></i></div><div class="blocos"><i class="c"></i><i></i><i></i></div><div class="blocos"><i></i><i></i><i class="a"></i></div>';}
-  else if(t==='d'){h='<div class="row on"><i></i><div class="l c"></div><div class="l"></div></div><div class="row"><i></i><div class="l"></div><div class="l"></div></div><div class="row"><i></i><div class="l"></div><div class="l"></div></div><div class="l a" style="width:55%;margin-top:6px"></div>';}
-  else{h='<div class="blocos"><i class="a"></i><i class="a"></i><i class="c"></i></div><div class="l a" style="width:80%"></div><div class="l" style="width:60%"></div><div class="l c" style="width:35%"></div>';}
-  return h+'<span class="ilu">ilustração</span>';
+  var P='<svg class="art" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+   +'<defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#648CFF"/><stop offset="1" stop-color="#39D5E8"/></linearGradient>'
+   +'<linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2640"/><stop offset="1" stop-color="#121a2b"/></linearGradient>'
+   +'<radialGradient id="gl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#648CFF" stop-opacity=".35"/><stop offset="1" stop-color="#648CFF" stop-opacity="0"/></radialGradient>'
+   +'<pattern id="dt" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#ffffff" fill-opacity=".07"/></pattern></defs>'
+   +'<rect width="800" height="450" fill="url(#dt)"/>';
+  var I=function(n,x,y,s,c,w){return '<svg x="'+x+'" y="'+y+'" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="'+(c||'#fff')+'" stroke-width="'+(w||1.8)+'" stroke-linecap="round" stroke-linejoin="round"><use href="#i-'+n+'"/></svg>'};
+  var tile=function(x,y,s,n,c){return '<rect x="'+x+'" y="'+y+'" width="'+s+'" height="'+s+'" rx="'+(s*.26)+'" fill="url(#gd)" stroke="'+(c||'#648CFF')+'" stroke-opacity=".55"/>'+I(n,x+s*.24,y+s*.24,s*.52,c||'#9db6ff')};
+  var o='';
+  if(t==='nexo'){
+    var pts=[[200,105,'clipboard-check','#9db6ff'],[600,105,'calendar-days','#8eeaf4'],[200,300,'book-open','#8eeaf4'],[600,300,'layout-dashboard','#9db6ff']];
+    o+='<circle cx="400" cy="225" r="210" fill="url(#gl)"/><circle cx="400" cy="225" r="170" fill="none" stroke="#648CFF" stroke-opacity=".18" stroke-dasharray="3 8"/><circle cx="400" cy="225" r="115" fill="none" stroke="#39D5E8" stroke-opacity=".2"/>';
+    pts.forEach(function(p){o+='<path d="M400 225 Q '+((400+p[0]+45)/2)+' '+((225+p[1]+45)/2)+' '+(p[0]+45)+' '+(p[1]+45)+'" fill="none" stroke="#648CFF" stroke-opacity=".5" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>'});
+    pts.forEach(function(p){o+=tile(p[0],p[1],90,p[2],p[3])});
+    o+='<rect x="340" y="165" width="120" height="120" rx="32" fill="url(#gb)"/>'+I('blocks',370,195,60,'#fff',1.7);
+  }
+  if(t==='disc'){
+    var pe=[[220,'#648CFF'],[310,'#39D5E8'],[400,'#648CFF'],[490,'#39D5E8'],[580,'#648CFF']];
+    o+='<ellipse cx="400" cy="300" rx="300" ry="150" fill="url(#gl)"/>';
+    o+='<rect x="335" y="55" width="130" height="86" rx="20" fill="url(#gd)" stroke="#648CFF" stroke-opacity=".55"/>'+I('clipboard-check',367,66,66,'#9db6ff',1.6);
+    o+='<g transform="translate(-100 -85) scale(1.25)">';
+    pe.forEach(function(p,i){var x=p[0],c=p[1],y=250+(i%2?18:0);
+      o+='<path d="M'+(x-34)+' '+(y+110)+' v-12 a34 30 0 0 1 68 0 v12z" fill="'+c+'" fill-opacity=".28" stroke="'+c+'" stroke-opacity=".7"/><circle cx="'+x+'" cy="'+(y+52)+'" r="22" fill="'+c+'" fill-opacity=".4" stroke="'+c+'" stroke-opacity=".8"/>';
+      if(i!==2)o+='<circle cx="'+(x+26)+'" cy="'+(y+30)+'" r="14" fill="#3DD68C"/>'+I('check',x+17,y+21,18,'#07120c',3);});
+    o+='</g>';
+  }
+  if(t==='agenda'){
+    o+='<ellipse cx="400" cy="250" rx="300" ry="170" fill="url(#gl)"/><rect x="190" y="70" width="420" height="320" rx="26" fill="url(#gd)" stroke="#ffffff" stroke-opacity=".14"/><path d="M190 130 V96 a26 26 0 0 1 26 -26 H584 a26 26 0 0 1 26 26 V130z" fill="url(#gb)" fill-opacity=".9"/><rect x="262" y="52" width="10" height="38" rx="5" fill="#cfe0ff"/><rect x="528" y="52" width="10" height="38" rx="5" fill="#cfe0ff"/>';
+    var col=['#648CFF','#39D5E8','#6b7488'];
+    for(var r=0;r<3;r++)for(var c=0;c<5;c++){var k=(r*5+c);var on=[0,3,6,9,11,13].indexOf(k)>-1;var x=218+c*72,y=152+r*76;
+      o+='<rect x="'+x+'" y="'+y+'" width="62" height="64" rx="12" fill="'+(on?col[k%3]:'#ffffff')+'" fill-opacity="'+(on?.34:.04)+'" stroke="'+(on?col[k%3]:'#ffffff')+'" stroke-opacity="'+(on?.8:.08)+'"/>'}
+    o+=tile(560,300,84,'house','#8eeaf4');
+  }
+  if(t==='vouch'){
+    var tk=function(x,y,w,h,rot,fill,op,st){var cx=x+w*.7;return '<g transform="rotate('+rot+' '+(x+w/2)+' '+(y+h/2)+')"><path d="M'+(x+18)+' '+y+' H'+(cx-13)+' a13 13 0 0 0 26 0 H'+(x+w-18)+' q18 0 18 18 V'+(y+h-18)+' q0 18 -18 18 H'+(cx+13)+' a13 13 0 0 0 -26 0 H'+(x+18)+' q-18 0 -18 -18 V'+(y+18)+' q0 -18 18 -18z" fill="'+fill+'" fill-opacity="'+op+'" stroke="'+st+'" stroke-opacity=".7"/><line x1="'+cx+'" y1="'+(y+20)+'" x2="'+cx+'" y2="'+(y+h-20)+'" stroke="'+st+'" stroke-opacity=".6" stroke-dasharray="4 7" stroke-linecap="round"/></g>'};
+    o+='<ellipse cx="400" cy="235" rx="300" ry="170" fill="url(#gl)"/>'+tk(180,70,420,130,-7,'#39D5E8',.16,'#39D5E8')+tk(200,285,420,130,5,'#648CFF',.18,'#648CFF')+tk(220,165,420,130,-1,'#1a2338',1,'#9db6ff')
+     +'<rect x="262" y="203" width="120" height="14" rx="7" fill="#9db6ff" fill-opacity=".3"/><rect x="262" y="233" width="80" height="10" rx="5" fill="#9db6ff" fill-opacity=".18"/><rect x="524" y="195" width="60" height="60" rx="18" fill="url(#gb)"/>'+I('ticket',534,205,40,'#fff',1.8);
+  }
+  if(t==='farma'){
+    o+='<ellipse cx="400" cy="235" rx="310" ry="170" fill="url(#gl)"/><rect x="130" y="110" width="190" height="190" rx="48" fill="url(#gb)"/><path d="M200 150h50v40h40v50h-40v40h-50v-40h-40v-50h40z" transform="translate(0 -10)" fill="#fff"/>'
+     +'<g transform="rotate(-32 270 360)"><rect x="205" y="335" width="130" height="50" rx="25" fill="#1a2338" stroke="#9db6ff" stroke-opacity=".6"/><path d="M270 335h40a25 25 0 0 1 0 50h-40z" fill="#39D5E8" fill-opacity=".5"/></g>';
+    var bs=[70,105,95,150,205];
+    bs.forEach(function(h,i){var x=430+i*62,y=380-h;o+='<rect x="'+x+'" y="'+y+'" width="42" height="'+h+'" rx="10" fill="'+(i===4?'url(#gb)':'#648CFF')+'" fill-opacity="'+(i===4?1:.3)+'" stroke="#648CFF" stroke-opacity=".45"/>'});
+    o+='<path d="M440 270 L505 235 L567 250 L629 200 L691 140" fill="none" stroke="#3DD68C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="691" cy="140" r="8" fill="#3DD68C"/>'+tile(620,70,76,'message-square','#8eeaf4');
+  }
+  return P+o+'</svg>';
 }
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var grade=document.getElementById('grade');
 PROJ.forEach(function(p,i){
-  var b=document.createElement('div');
+  var b=document.createElement('article');
   b.setAttribute('role','button');b.tabIndex=0;
-  b.className='proj rev'+(p.g?' g':'');
+  b.className='proj rev'+(p.main?' main':'');
   b.style.setProperty('--d',(i*0.06)+'s');
   b.setAttribute('aria-haspopup','dialog');
-  b.setAttribute('aria-label','Abrir estudo de caso: '+p.nome);
-  b.innerHTML='<div class="vis" aria-hidden="true">'+vis(p.vis)+'</div><div class="corpo"><div class="topo-p"><h3>'+esc(p.nome)+'</h3><span class="st'+(p.ok?' ok':'')+'">'+esc(p.status)+'</span></div><p>'+esc(p.desc)+'</p><div class="tags">'+p.tec.map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</div><span class="mais">Ver estudo de caso <svg class="ic"><use href="#i-arrow-up-right"/></svg></span></div>';
+  b.setAttribute('aria-label','Conhecer o projeto '+p.nome);
+  var mods=p.mods?'<div class="mods">'+p.mods.map(function(m){return '<span>'+ico(m[0])+esc(m[1])+'</span>'}).join('')+'</div>':'';
+  b.innerHTML='<div class="vis" aria-hidden="true">'+vis(p.vis)+'</div><div class="corpo"><div class="topo-p"><h3>'+esc(p.nome)+'</h3><span class="st'+(p.ok?' ok':'')+'">'+esc(p.status)+'</span></div><p class="d">'+esc(p.desc)+'</p>'+mods+'<div class="tags">'+p.tec.map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</div><span class="mais'+(p.main?'':' l')+'">Conhecer o projeto <svg class="ic"><use href="#i-arrow-up-right"/></svg></span></div>';
   b.addEventListener('click',function(){abrir(p,b)});
   b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir(p,b)}});
   b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--cx',(e.clientX-r.left)+'px');b.style.setProperty('--cy',(e.clientY-r.top)+'px')});
@@ -470,9 +522,9 @@ PROJ.forEach(function(p,i){
 var modal=document.getElementById('modal'),mIn=document.getElementById('m-in'),ultimo=null;
 function abrir(p,el){
   ultimo=el;
-  mIn.innerHTML='<div class="m-top"><div><span class="st'+(p.ok?' ok':'')+'">'+esc(p.status)+'</span></div><button class="fecha" aria-label="Fechar"><svg class="ic"><use href="#i-x"/></svg></button></div><h3 id="m-tit">'+esc(p.nome)+'</h3><p class="lead">'+esc(p.desc)+'</p>'+
-  '<div class="bl"><h4>PROBLEMA</h4><p>'+esc(p.problema)+'</p></div><div class="bl"><h4>SOLUÇÃO</h4><p>'+esc(p.solucao)+'</p></div><div class="bl"><h4>FUNCIONALIDADES</h4><ul>'+p.func.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul></div><div class="bl"><h4>TECNOLOGIAS</h4><div class="tags" style="margin:0">'+p.tec.map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</div></div>'+
-  '<div class="priv"><svg class="ic"><use href="#i-lock"/></svg>Projeto privado.</div>';
+  mIn.innerHTML='<button class="fecha" aria-label="Fechar"><svg class="ic"><use href="#i-x"/></svg></button><div class="vis mv" aria-hidden="true">'+vis(p.vis)+'</div><div class="m-top"><h3 id="m-tit">'+esc(p.nome)+'</h3><span class="st'+(p.ok?' ok':'')+'">'+esc(p.status)+'</span></div><p class="lead">'+esc(p.desc)+'</p>'+
+  '<div class="bl"><h4>OBJETIVO</h4><p>'+esc(p.obj)+'</p></div><div class="bl"><h4>O QUE TEM</h4><ul>'+p.func.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul></div><div class="bl"><h4>TECNOLOGIAS</h4><div class="tags" style="margin:0">'+p.tec.map(function(t){return '<span>'+esc(t)+'</span>'}).join('')+'</div></div>'+
+  '<div class="priv"><svg class="ic"><use href="#i-lock"/></svg>Projeto privado. Imagem genérica do app.</div>';
   mIn.querySelector('.fecha').addEventListener('click',function(){modal.close()});
   if(modal.showModal){modal.showModal()}else{modal.setAttribute('open','')}
   document.documentElement.style.overflow='hidden';
